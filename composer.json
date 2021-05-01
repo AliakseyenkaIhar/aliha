@@ -15,5 +15,17 @@
         "symfony/console": "^5.2",
         "hellonico/twig-dump-extension": "^1.1",
         "brain/monkey": "^2.6"
-    }
+    },
+	"config": {
+		"optimize-autoloader": true,
+		"preferred-install": "dist"
+	},
+	"autoload": {
+		"psr-4": {
+			"Aliha\\Marusia\\": "core/"
+		},
+        "files": [
+            "core/helper.php"
+        ]
+	}
 }

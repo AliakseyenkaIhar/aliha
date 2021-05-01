@@ -10,7 +10,7 @@
  * @since 0.1.0
  */
 
-use Marusia\Marusia;
+use Aliha\Marusia\Marusia;
 use HelloNico\Twig\DumpExtension;
 use function Marusia\config;
 
@@ -25,7 +25,7 @@ if ( file_exists( $autoload ) ) {
 	/**
 	 * Include Kirki Framework
 	 */
-	$kirki_file = MARUSIA_PATH . '/framework/includes/kirki/installer.php';
+	$kirki_file = MARUSIA_PATH . '/includes/kirki/installer.php';
 
 	/**
 	 * Check, if Kirki Framework already installed as a plugin
