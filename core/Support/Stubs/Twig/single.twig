@@ -1,0 +1,25 @@
+{% extends 'layouts/layout.singular.twig' %}
+
+{% block content %}
+	<!-- Post-{{ post.ID }}  -->
+	<article
+		class="{{ post.post_class }} w-full h-auto prose max-w-none"
+		id="{{ post.post_type }}-{{ post.ID }}"
+	>
+
+		<header class="entry-header">
+			<h1 class="entry-title">{{ post.title }}</h1>
+		</header><!-- .entry-header -->
+
+		<div class="entry-content">
+			{{ post.content|e('wp_kses_post') }}
+		</div><!-- .entry-content -->
+
+		<footer class="entry-footer">
+			{% if post.edit_link %}
+				<a href="{{ post.edit_link }}">{{ __('Edit', 'aliha') }}</a>
+			{% endif %}
+		</footer><!-- .entry-footer -->
+
+	</article><!-- #{{ post.post_type }}-{{ post.ID }} -->
+{% endblock %}

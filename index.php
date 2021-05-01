@@ -1,0 +1,2 @@
+<?php
+// Who's there?

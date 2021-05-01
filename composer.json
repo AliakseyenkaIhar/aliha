@@ -1,0 +1,19 @@
+{
+    "name": "aliha/aliha",
+    "description": "Engine for Marusia Templates",
+    "type": "library",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Ihar Aliakseyenka",
+            "email": "aliha.devs@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "timber/timber": "^1.18",
+        "symfony/console": "^5.2",
+        "hellonico/twig-dump-extension": "^1.1",
+        "brain/monkey": "^2.6"
+    }
+}

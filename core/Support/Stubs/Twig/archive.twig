@@ -1,0 +1,11 @@
+{% extends 'layouts/layout.index.twig' %}
+
+{% block content %}
+	<div class="container">
+		{% for post in posts %}
+			{% include 'content/{{ MODEL }}/content.preview.twig' %}
+		{% else %}
+			{{ __( 'There are no content yet', 'marusia' ) }}
+		{% endfor %}
+	</div>
+{% endblock %}
