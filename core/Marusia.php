@@ -9,7 +9,7 @@
  * @since 0.1.0
  */
 
-namespace Aliha\Marusia;
+namespace Marusia;
 
 use Timber\Timber;
 use Marusia\Routes\View;

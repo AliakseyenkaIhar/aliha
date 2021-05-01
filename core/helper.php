@@ -7,7 +7,7 @@
  * @since 0.1.0
  */
 
-namespace Aliha\Marusia;
+namespace Marusia;
 
 if ( ! function_exists( 'config' ) ) {
 

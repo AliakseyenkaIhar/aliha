@@ -22,7 +22,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Aliha\\Marusia\\": "core/"
+			"Marusia\\": "core/"
 		},
         "files": [
             "core/helper.php"

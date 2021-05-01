@@ -10,7 +10,7 @@
  * @since 0.1.0
  */
 
-use Aliha\Marusia\Marusia;
+use Marusia\Marusia;
 use HelloNico\Twig\DumpExtension;
 use function Marusia\config;
 
