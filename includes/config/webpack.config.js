@@ -3,7 +3,7 @@
  */
 const path                      = require('path');
 const webpack                   = require('webpack');
-const dotenv                    = require('dotenv').config({ path: path.join(__dirname, '../../../', '.env') });
+const dotenv                    = require('dotenv').config({ path: path.join(__dirname, '../../../../../', '.env') });
 
 const MiniCssExtractPlugin      = require('mini-css-extract-plugin');
 const RemoveEmptyScriptsPlugin  = require('webpack-remove-empty-scripts');
@@ -98,7 +98,7 @@ const config = {
 	devtool: isProd ? false : 'eval-cheap-source-map',
 
 	entry: () => new Promise((resolve) => resolve(
-		require('../../../aliha.config'),
+		require('../../../../../aliha.config'),
 	)),
 
 	output: {
