@@ -74,7 +74,7 @@ trait Console
 		/**
 		 * Model name - this is where your model would be saved
 		 */
-		$ModelFile = dirname( __DIR__, 3 ) . './web/app/themes/' . $this->theme . '/main/Models/' . ucfirst( $model ) . 'Model.php';
+		$ModelFile = dirname( __DIR__, 5 ) . './web/app/themes/' . $this->theme . '/main/Models/' . ucfirst( $model ) . 'Model.php';
 
 		if ( ! file_exists( $ModelStub ) || ! copy( $ModelStub, $ModelFile ) ) {
 			die( 'Unable to create file!' );
@@ -96,7 +96,7 @@ trait Console
 	 * Create archive views
 	 */
 	private function create_archive_template( $model, $cpt = '' ) {
-		$dirname = dirname( __DIR__, 3 ) . './web/app/themes/' . $this->theme . '/resources/views/content/' . strtolower( $model );
+		$dirname = dirname( __DIR__, 5 ) . './web/app/themes/' . $this->theme . '/resources/views/content/' . strtolower( $model );
 
 		$ModelStub = __DIR__ . '/Stubs/Twig/archive.twig';
 		$ModelFile = $dirname . '/content.archive.twig';
@@ -125,7 +125,7 @@ trait Console
 	 * Create single
 	 */
 	private function create_single_template( $model ) {
-		$dirname = dirname( __DIR__, 3 ) . './web/app/themes/' . $this->theme . '/resources/views/content/' . strtolower( $model );
+		$dirname = dirname( __DIR__, 5 ) . './web/app/themes/' . $this->theme . '/resources/views/content/' . strtolower( $model );
 
 		$ModelStub = __DIR__ . '/Stubs/Twig/single.twig';
 		$ModelFile = $dirname . '/content.single.twig';
@@ -149,7 +149,7 @@ trait Console
 	 */
 	private function create_preview_template( $model ) {
 
-		$dirname = dirname( __DIR__, 3 ) . './web/app/themes/' . $this->theme . '/resources/views/content/' . strtolower( $model );
+		$dirname = dirname( __DIR__, 5 ) . './web/app/themes/' . $this->theme . '/resources/views/content/' . strtolower( $model );
 
 		$ModelStub = __DIR__ . '/Stubs/Twig/preview.twig';
 		$ModelFile = $dirname . '/content.preview.twig';
@@ -173,7 +173,7 @@ trait Console
 	 */
 	private function create_custom_template( $slug ) {
 
-		$dirname = dirname( __DIR__, 3 ) . './web/app/themes/' . $this->theme . '/resources/views/templates';
+		$dirname = dirname( __DIR__, 5 ) . './web/app/themes/' . $this->theme . '/resources/views/templates';
 
 		$ModelStub = __DIR__ . '/Stubs/Twig/template.twig';
 		$ModelFile = $dirname . '/template.' . strtolower( $slug ) . '.twig';
@@ -207,7 +207,7 @@ trait Console
 		/**
 		 * Model name - this is where your model would be saved
 		 */
-		$ModelFile = dirname( __DIR__, 3 ) . './web/app/themes/' . $this->theme . '/main/Widgets/' . ucfirst( $widget ) . 'Widget.php';
+		$ModelFile = dirname( __DIR__, 5 ) . './web/app/themes/' . $this->theme . '/main/Widgets/' . ucfirst( $widget ) . 'Widget.php';
 
 		if ( ! file_exists( $ModelStub ) || ! copy( $ModelStub, $ModelFile ) ) {
 			die( 'Unable to create file!' );
@@ -227,7 +227,7 @@ trait Console
 		/**
 		 * Add template
 		 */
-		$dirname = dirname( __DIR__, 3 ) . './web/app/themes/' . $this->theme . '/resources/views/widgets/';
+		$dirname = dirname( __DIR__, 5 ) . './web/app/themes/' . $this->theme . '/resources/views/widgets/';
 
 		$templateStub = __DIR__ . '/Stubs/Twig/widget.twig';
 		$templateFile = $dirname . 'widget.' . strtolower( $widget ) . '.twig';
@@ -261,7 +261,7 @@ trait Console
 		/**
 		 * Model name - this is where your model would be saved
 		 */
-		$ModelFile = dirname( __DIR__, 3 ) . './web/app/themes/' . $this->theme . '/main/Shortcodes/' . ucfirst( $shortcode ) . 'Shortcode.php';
+		$ModelFile = dirname( __DIR__, 5 ) . './web/app/themes/' . $this->theme . '/main/Shortcodes/' . ucfirst( $shortcode ) . 'Shortcode.php';
 
 		if ( ! file_exists( $ModelStub ) || ! copy( $ModelStub, $ModelFile ) ) {
 			die( 'Unable to create file!' );
@@ -281,7 +281,7 @@ trait Console
 		/**
 		 * Add template
 		 */
-		$dirname = dirname( __DIR__, 3 ) . './web/app/themes/' . $this->theme . '/resources/views/shortocodes/';
+		$dirname = dirname( __DIR__, 5 ) . './web/app/themes/' . $this->theme . '/resources/views/shortcodes/';
 
 		$templateStub = __DIR__ . '/Stubs/Twig/shortcode.twig';
 		$templateFile = $dirname . 'widget.' . strtolower( $shortcode ) . '.twig';
