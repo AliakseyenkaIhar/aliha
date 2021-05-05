@@ -88,12 +88,12 @@ class Style
 
 		foreach ( $additional as $style => $callback ) {
 			if ( call_user_func( ...$callback ) ) {
-				wp_enqueue_script(
+				wp_enqueue_style(
 					getenv( 'THEME' ) . '-' . $style,
 					MARUSIA_PUBLIC_URI . $assets[ $style . '.css' ],
 					[],
 					time(),
-					true,
+					'all',
 				);
 			}
 
@@ -107,7 +107,7 @@ class Style
 			foreach ( $assets as $handle => $path ) {
 				if ( str_starts_with( $path, 'css/' ) ) {
 					$name = str_replace( '.css', '', $handle );
-					wp_enqueue_script(
+					wp_enqueue_style(
 						getenv( 'THEME' ) . '-' . $name,
 						MARUSIA_PUBLIC_URI . $path,
 						[],
