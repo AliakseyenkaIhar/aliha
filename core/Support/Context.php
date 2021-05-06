@@ -43,18 +43,7 @@ trait Context
 		/**
 		 * Include context from configuration file
 		 */
-		$ctx = [
-			'queried'             => get_queried_object(),
-			'display_header_text' => display_header_text(),
-			'is_front'            => is_front_page(),
-			'is_singular'         => is_singular(),
-			'nonce'               => wp_create_nonce( 'aliha_nonce_action' ),
-			// 'referer'             => URLHelper::get_current_url(),
-			'same_posts'          => Timber::get_posts([
-				'post_type' => 'post',
-				'posts_per_page' => 33,
-			]),
-		];
+		$ctx = \Theme\Context::global();
 
 		/**
 		 * Merge together our and default contexts
@@ -64,12 +53,7 @@ trait Context
 		/**
 		 * Finally add local context from config file
 		 */
-		$local_ctx = [
-			'front_sections' => [
-				'value'    => [ 'offer' ],
-				'callback' => [ 'is_front_page' ],
-			],
-		];
+		$local_ctx = \Theme\Context::local();
 		foreach ( $local_ctx as $ctx_name => $ctx_value ) {
 
 			$callback = $ctx_value['callback'];
