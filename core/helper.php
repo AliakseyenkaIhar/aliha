@@ -18,7 +18,7 @@ if ( ! function_exists( 'config' ) ) {
 	 * @param string $file | filename to get information from.
 	 * @return configuration value.
 	 */
-	function config( string $key, string $file = 'timber' ) {
+	function config( string $key, string $file = 'theme' ) {
 		$config = include MARUSIA_PATH . '/config/' . $file . '.php';
 
 		/**

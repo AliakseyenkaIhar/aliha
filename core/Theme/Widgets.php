@@ -19,7 +19,7 @@ class Widgets
 	}
 
 	public function register() {
-		$sidebars = config( 'sidebars', 'theme' );
+		$sidebars = \Theme\Context::sidebars();
 
 		foreach ( $sidebars as $sidebar ) {
 			register_sidebar( $sidebar );

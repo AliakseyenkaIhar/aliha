@@ -26,7 +26,7 @@ class Menus
 	 * Define menus
 	 */
 	public function __construct() {
-		$this->menus = config( 'menus', 'theme' );
+		$this->menus = \Theme\Context::menus();
 	}
 
 	/**
@@ -35,7 +35,6 @@ class Menus
 	public function set() {
 		if ( ! empty( $this->menus ) ) {
 			add_action( 'after_setup_theme', [ $this, 'register' ] );
-			add_filter( 'timber/context', [ $this, 'add_menus_to_context' ] );
 		}
 	}
 
@@ -49,22 +48,5 @@ class Menus
 				$this->menus
 			)
 		);
-	}
-
-	/**
-	 * Add menus to context
-	 *
-	 * @param array $context | global context.
-	 */
-	public function add_menus_to_context( $context ) {
-		/**
-		 * Add menu locations to context
-		 */
-		$menu_context = [];
-		foreach ( $this->menus as $menu => $label ) {
-			$menu_context[ $menu . '_menu' ] = new Menu( $menu );
-		}
-
-		return $context;
 	}
 }

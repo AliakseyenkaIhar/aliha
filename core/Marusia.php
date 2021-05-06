@@ -53,12 +53,12 @@ class Marusia
 		 * Define views folder
 		 */
 		$default_views          = [ 'resources/views' ];
-		$this->timber::$dirname = apply_filters( 'marusia_views_folder', config( 'dirname' ) ?: $default_views );
+		$this->timber::$dirname = apply_filters( 'marusia_views_folder', $default_views );
 
 		/**
 		 * Autoescape output or not?
 		 */
-		$this->timber::$autoescape = apply_filters( 'marusia_autoescape', config( 'autoescape' ) ?: false );
+		$this->timber::$autoescape = apply_filters( 'marusia_autoescape', false );
 
 		/**
 		 * Remove all emojis
@@ -102,7 +102,7 @@ class Marusia
 		/**
 		 * Sidebars
 		 */
-		if ( ! empty( config( 'sidebars', 'theme' ) ) ) {
+		if ( ! empty( \Theme\Context::sidebars() ) ) {
 			$sidebars = new Widgets();
 			$sidebars->init();
 		}

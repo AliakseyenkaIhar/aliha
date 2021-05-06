@@ -35,7 +35,7 @@ class Context
 		 * Add menu locations to context
 		 */
 		$menu_context = [];
-		foreach ( config( 'menus', 'theme' ) as $menu => $label ) {
+		foreach ( \Theme\Context::menus() as $menu => $label ) {
 			$menu_context[ $menu . '_menu' ] = new \Timber\Menu( $menu ); // TODO will change!
 		}
 		$context = array_merge( $context, $menu_context );
@@ -46,7 +46,7 @@ class Context
 		 * @since 0.1.6
 		 */
 		$sidebar_context = [];
-		foreach ( config( 'sidebars', 'theme' ) as $sidebar ) {
+		foreach ( \Theme\Context::sidebars() as $sidebar ) {
 			$sidebar_context[ str_replace( '-', '_', $sidebar['id'] ) ] = Timber::get_widgets( $sidebar['id'] );
 		}
 		$context = array_merge( $context, $sidebar_context );
@@ -64,13 +64,14 @@ class Context
 	 * @param Twig\Environment $twig get extension.
 	 */
 	public static function add_to_twig( Twig\Environment $twig ) {
-		foreach ( config( 'twig_functions' ) as $name => $callback ) {
+
+		foreach ( \Theme\Context::twig_functions() as $name => $callback ) {
 			$twig->addFunction( new Timber\Twig_Function( $name, $callback ) );
 		}
 
 		$twig->addFunction( new Timber\Twig_Function( 'env', 'getenv' ) );
 
-		foreach ( config( 'twig_filters' ) as $name => $callback ) {
+		foreach ( \Theme\Context::twig_filters() as $name => $callback ) {
 			$twig->addFilter( new Twig\TwigFilter( $name, $callback ) );
 		}
 
@@ -81,7 +82,7 @@ class Context
 	 * Add namespaces to view
 	 */
 	public static function loader( $loader ){
-		foreach ( config( 'twig_namespaces' ) as $namespace => $path ) {
+		foreach ( \Theme\Context::twig_namespaces() as $namespace => $path ) {
 			$loader->addPath( $path, $namespace );
 		}
 		return $loader;
