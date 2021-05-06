@@ -85,7 +85,7 @@ class Script
 					getenv( 'THEME' ) . '-' . $script,
 					MARUSIA_PUBLIC_URI . $assets[ $script . '.js' ],
 					[],
-					time(),
+					filemtime( MARUSIA_PUBLIC_PATH . $assets[ $script . '.js' ] ),
 					true,
 				);
 			}
@@ -104,7 +104,7 @@ class Script
 						getenv( 'THEME' ) . '-' . $name,
 						MARUSIA_PUBLIC_URI . $path,
 						[],
-						time(),
+						filemtime( MARUSIA_PUBLIC_PATH . $path ),
 						true,
 					);
 				}

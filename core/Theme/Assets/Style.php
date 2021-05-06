@@ -56,12 +56,12 @@ class Style
 		if ( ! empty( $assets ) ) {
 			foreach ( $assets as $handle => $path ) {
 
-				if ( str_starts_with( $path, 'css/' ) ) {
+				if ( str_starts_with( $path, 'css/' ) && ! str_ends_with( $path, '.map' ) ) {
 					wp_enqueue_style(
 						getenv( 'THEME' ) . '-' . str_replace( '.css', '', $handle ),
 						MARUSIA_PUBLIC_URI . $path,
 						[],
-						time(),
+						filemtime( MARUSIA_PUBLIC_PATH . $path ),
 						'all',
 					);
 				}
@@ -92,7 +92,7 @@ class Style
 					getenv( 'THEME' ) . '-' . $style,
 					MARUSIA_PUBLIC_URI . $assets[ $style . '.css' ],
 					[],
-					time(),
+					filemtime( MARUSIA_PUBLIC_PATH . $assets[ $style . '.css' ] ),
 					'all',
 				);
 			}
@@ -105,13 +105,13 @@ class Style
 		 */
 		if ( ! empty( $assets ) ) {
 			foreach ( $assets as $handle => $path ) {
-				if ( str_starts_with( $path, 'css/' ) ) {
+				if ( str_starts_with( $path, 'css/' ) && ! str_ends_with( $path, '.map' ) ) {
 					$name = str_replace( '.css', '', $handle );
 					wp_enqueue_style(
 						getenv( 'THEME' ) . '-' . $name,
 						MARUSIA_PUBLIC_URI . $path,
 						[],
-						time(),
+						filemtime( MARUSIA_PUBLIC_PATH . $path ),
 						'all',
 					);
 				}
