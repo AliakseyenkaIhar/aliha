@@ -65,6 +65,8 @@ class Marusia
 		 */
 		$emojis = new \Marusia\Theme\Assets\Emoji();
 		add_action( 'init', [ $emojis, 'disable' ] );
+
+		\Marusia\Theme\Ajax::call();
 	}
 
 	/**
