@@ -19,7 +19,7 @@ if ( ! function_exists( 'config' ) ) {
 	 * @return configuration value.
 	 */
 	function config( string $key, string $file = 'theme' ) {
-		$config = include MARUSIA_PATH . '/config/' . $file . '.php';
+		$config = include get_template_directory() . '/main/settings/' . $file . '.php';
 
 		/**
 		 * If such key doesn't exists return nothing
@@ -59,18 +59,5 @@ if ( ! function_exists( 'src' ) ) {
 		}
 
 		return $public_image;
-	}
-}
-
-if ( ! function_exists( 'clear_phone' ) ) {
-
-	/**
-	 * Clear phone number
-	 *
-	 * @param string $phone | phone number.
-	 * @return string clear phone.
-	 */
-	function clear_phone( string $phone ) {
-		return preg_replace( '/[^0-9+]/', '', esc_attr( $phone ) );
 	}
 }
