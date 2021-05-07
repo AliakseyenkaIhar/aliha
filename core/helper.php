@@ -49,12 +49,13 @@ if ( ! function_exists( 'src' ) ) {
 
 		if ( file_exists( $manifest ) ) {
 			$assets = (array) json_decode( file_get_contents( $manifest, true ) );
-		}
 
-		$key_exist = array_key_exists( 'img/' . $img, $assets );
+			$key_exist = array_key_exists( 'img/' . $img, $assets );
 
-		if ( $key_exist ) {
-			$public_image = get_template_directory_uri() . '/public/' . $assets[ 'img/' . $img ];
+			if ( $key_exist ) {
+				$public_image = get_template_directory_uri() . '/public/' . $assets[ 'img/' . $img ];
+			}
+		
 		}
 
 		return $public_image;

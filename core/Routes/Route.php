@@ -129,7 +129,7 @@ class Route
 	 */
 	public static function home() {
 		if ( is_home() && ! self::$__template_was_found ) {
-			View::render( 'content/content.home.twig' );
+			View::render( 'content/post/content.home.twig' );
 			self::$__template_was_found = true;
 		}
 	}
