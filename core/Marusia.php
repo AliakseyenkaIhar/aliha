@@ -78,6 +78,7 @@ class Marusia
 		 * Let WordPress handle the title tag
 		 */
 		add_theme_support( 'title-tag' );
+		$GLOBALS['content_width'] = apply_filters( 'marusia_content_width', 800 );
 
 		/**
 		 * Set Timber context and functions

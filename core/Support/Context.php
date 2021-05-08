@@ -10,7 +10,6 @@
 namespace Marusia\Support;
 
 use Timber\Timber;
-use function Marusia\config;
 
 trait Context
 {
@@ -31,7 +30,7 @@ trait Context
 	private static $views = [ 'content/content.twig' ];
 
 	private static function set_context() {
-		self::$context = array_merge( Timber::context(), self::$context );
+		self::$context += Timber::context();
 	}
 
 	/**
@@ -52,7 +51,7 @@ trait Context
 		/**
 		 * Merge together our and default contexts
 		 */
-		self::$context = array_merge( self::$context, $ctx );
+		self::$context += $ctx;
 
 		/**
 		 * Finally add local context from config file
@@ -64,6 +63,15 @@ trait Context
 
 			if ( call_user_func( ...$callback ) ) {
 				self::$context[ $ctx_name ] = $ctx_value['value'];
+			}
+		}
+
+		if ( is_singular() ) {
+			global $post, $page, $pages, $multipage;
+			setup_postdata( $post );
+
+			if ( $multipage ) {
+				self::$context['post']->post_content = $pages[$page - 1];
 			}
 		}
 

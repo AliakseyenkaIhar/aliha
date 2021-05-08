@@ -25,7 +25,6 @@ class View
 	 * @param array $layout | list of all view files including backups.
 	 */
 	public static function render( $layout ) {
-		self::set_context();
 		array_unshift( self::$views, $layout );
 		Timber::render( self::$views, self::get_context() );
 	}
@@ -46,7 +45,7 @@ class View
 	 * @param array $context | additional context.
 	 */
 	public static function with_context( array $context = [] ) {
-		Timber::render( self::$views, array_merge( self::get_context(), $context ) );
+		Timber::render( self::$views, self::get_context() + $context );
 	}
 
 	/**
