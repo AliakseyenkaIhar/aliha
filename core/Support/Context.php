@@ -20,7 +20,7 @@ trait Context
 	 *
 	 * @var array
 	 */
-	private static $context;
+	private static $context = [];
 
 	/**
 	 * Views to render.
@@ -30,6 +30,10 @@ trait Context
 	 */
 	private static $views = [ 'content/content.twig' ];
 
+	private static function set_context() {
+		self::$context = array_merge( Timber::context(), self::$context );
+	}
+
 	/**
 	 * Get Timber context
 	 */
@@ -38,7 +42,7 @@ trait Context
 		/**
 		 * Set Timber context
 		 */
-		self::$context = Timber::context();
+		self::set_context();
 
 		/**
 		 * Include context from configuration file
