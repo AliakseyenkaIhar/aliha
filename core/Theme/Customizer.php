@@ -52,7 +52,7 @@ class Customizer
 		/**
 		 * Get the list of all options for customizer
 		 */
-		self::$customizer = include MARUSIA_PATH . '/config/customizer.php';
+		self::$customizer = include get_template_directory() . '/main/settings/customizer.php';
 
 		self::$config = apply_filters( 'marusia_default_config_id', 'marusia_config' );
 

@@ -6,15 +6,21 @@
 namespace Theme\Widgets;
 
 use Timber;
-use WP_Widget;
+use Carbon_Fields\Field;
+use Carbon_Fields\Widget;
 
-class {{ WIDGET }}Widget extends WP_Widget
+class {{ WIDGET }}Widget extends Widget
 {
 
 	public function __construct() {
-		parent::__construct(
+		$this->setup(
 			'marusia_{{ WIDGET_LC }}_widget',
-			esc_html__( 'Marusia | {{ WIDGET }}', 'marusia' )
+			esc_html__( 'Marusia | {{ WIDGET }}', 'marusia' ),
+			esc_html__( '{{ WIDGET }} description', 'marusia' ),
+			[
+				// Field::make( 'text', 'title', 'Title' )->set_default_value( 'Hello World!' ),
+				// Field::make( 'textarea', 'content', 'Content' )->set_default_value( 'Lorem Ipsum dolor sit amet' ),
+			],
 		);
 	}
 
@@ -28,26 +34,9 @@ class {{ WIDGET }}Widget extends WP_Widget
 		);
 
 		Timber::render(
-			'widgets/widget.contacts.twig',
+			'widgets/widget.{{ WIDGET_LC }}.twig',
 			$widget_context,
 		);
-	}
-
-	public function form( $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : ''; ?>
-
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
-		</p>
-
-		<?php
-	}
-
-	public function update( $new_instance, $old_instance ) {
-		$instance          = $old_instance;
-		$instance['title'] = wp_strip_all_tags( $new_instance['title'] );
-		return $instance;
 	}
 
 }
