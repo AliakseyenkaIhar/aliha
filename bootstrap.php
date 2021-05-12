@@ -35,18 +35,6 @@ if ( file_exists( $autoload ) ) {
 	}
 
 	/**
-	 * Define main theme constants
-	 * Have to be defined before theme instance
-	 */
-	$definitions = config( 'definitions', 'theme' );
-
-	foreach ( $definitions as $definition => $value ) {
-		if ( ! defined( $definition ) ) {
-			define( $definition, $value );
-		}
-	}
-
-	/**
 	 * App version
 	 */
 	$theme = wp_get_theme();
