@@ -9,6 +9,8 @@
 
 namespace Marusia;
 
+use Marusia\Routes\View;
+
 if ( ! function_exists( 'config' ) ) {
 
 	/**
@@ -55,9 +57,26 @@ if ( ! function_exists( 'src' ) ) {
 			if ( $key_exist ) {
 				$public_image = get_template_directory_uri() . '/public/' . $assets[ 'img/' . $img ];
 			}
-		
+
 		}
 
 		return $public_image;
+	}
+}
+
+if ( ! function_exists( 'view' ) ) {
+
+	/**
+	 * Render view helper
+	 *
+	 * @param string $view | name of the template to render.
+	 */
+	function view( $view, $context = [] ) {
+
+		if ( empty( $context ) ) {
+			return View::render( $view );
+		}
+
+		return View::template( $view )->with_context( $context );
 	}
 }

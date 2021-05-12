@@ -29,18 +29,61 @@ class Route
 	 */
 	public static function get( $condition, $callback ) {
 
+		if( self::$__template_was_found ) {
+			return;
+		}
+
 		/**
 		 * If no arguments passed, set second parameter as an empty array of values.
 		 */
 		$passed_callback = self::check_callback( $callback );
 
 		if ( is_array( $condition ) ) {
-			if ( call_user_func( ...$condition ) && ! self::$__template_was_found ) {
+			if ( call_user_func( ...$condition ) ) {
 				call_user_func_array( ...$passed_callback );
 				self::$__template_was_found = true;
 			}
-		} else {
-			if ( call_user_func( $condition ) && ! self::$__template_was_found ) {
+		}
+
+		if ( is_string( $condition ) ) {
+
+			/**
+			 * NOT condition
+			 */
+			if ( str_starts_with( $condition, '!' ) ) {
+				if ( ! call_user_func( substr( $condition, 1 ) ) ) {
+					call_user_func_array( ...$passed_callback );
+					self::$__template_was_found = true;
+				}
+			}
+
+			if ( call_user_func( $condition ) ) {
+				call_user_func_array( ...$passed_callback );
+				self::$__template_was_found = true;
+			}
+		}
+	}
+
+	public static function not( $condition, $callback ) {
+		if( self::$__template_was_found ) {
+			return;
+		}
+
+		/**
+		 * If no arguments passed, set second parameter as an empty array of values.
+		 */
+		$passed_callback = self::check_callback( $callback );
+
+		if ( is_array( $condition ) ) {
+			if ( ! call_user_func( ...$condition ) ) {
+				call_user_func_array( ...$passed_callback );
+				self::$__template_was_found = true;
+			}
+		}
+
+		if ( is_string( $condition ) ) {
+
+			if ( ! call_user_func( $condition ) ) {
 				call_user_func_array( ...$passed_callback );
 				self::$__template_was_found = true;
 			}

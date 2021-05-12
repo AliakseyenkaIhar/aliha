@@ -69,6 +69,15 @@ class Marusia
 		\Marusia\Theme\Ajax::call();
 	}
 
+	public function context() {
+
+		/**
+		 * Set Timber context and functions
+		 */
+		Context::set();
+		return $this;
+	}
+
 	/**
 	 * Run application
 	 */
@@ -79,11 +88,6 @@ class Marusia
 		 */
 		add_theme_support( 'title-tag' );
 		$GLOBALS['content_width'] = apply_filters( 'marusia_content_width', 800 );
-
-		/**
-		 * Set Timber context and functions
-		 */
-		Context::set();
 
 		/**
 		 * Custom hooks
@@ -217,20 +221,5 @@ class Marusia
 	public function editor() {
 		$editor = new Editor();
 		$editor->support();
-	}
-
-	/**
-	 * Custom actions for application
-	 */
-	public function creating() {
-		do_action( 'marusia_creating' );
-	}
-
-	public function created() {
-		do_action( 'marusia_created' );
-	}
-
-	public function before_setup() {
-		do_action( 'marusia_before_setup' );
 	}
 }

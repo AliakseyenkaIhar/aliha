@@ -59,19 +59,16 @@ if ( file_exists( $autoload ) ) {
 	 */
 	$app = new Marusia();
 
-	$app->creating();
-
 	/**
 	 * Init main theme features, such as metaboxes, options, styles and scripts.
 	 * All will be called in 'after_setup_theme' hook
 	 */
 	$app
+		->context()
 		->assets()
 		->metaboxes()
 		->blocks()
 		->customizer();
-
-	$app->before_setup();
 
 	/**
 	 * Run application.
@@ -79,8 +76,6 @@ if ( file_exists( $autoload ) ) {
 	 * Set priority to 1 - make sure it loaded first.
 	 */
 	add_action( 'after_setup_theme', [ $app, 'run' ], 1 );
-
-	$app->created();
 
 	/**
 	 * Add debug bar
