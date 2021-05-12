@@ -12,7 +12,6 @@
 
 use Marusia\Marusia;
 use HelloNico\Twig\DumpExtension;
-use function Marusia\config;
 
 /**
  * Make sure composer is installed
@@ -32,6 +31,31 @@ if ( file_exists( $autoload ) ) {
 	 */
 	if ( file_exists( $kirki_file ) && ! is_plugin_active( 'kirki' ) ) {
 		include_once $kirki_file;
+	}
+
+	/**
+	 * Theme path - base path for all other
+	 */
+	$mt_path = trailingslashit( get_template_directory() );
+	$mt_uri  = trailingslashit( get_template_directory_uri() );
+
+	/**
+	 * Define main theme constants
+	 * Have to be defined before theme instance
+	 */
+	$definitions = [
+		'MARUSIA_THEME_URI'   => $mt_uri,
+		'MARUSIA_THEME_PATH'  => $mt_path,
+		'MARUSIA_PUBLIC_URI'  => $mt_uri . 'public/',
+		'MARUSIA_PUBLIC_PATH' => $mt_path . 'public/',
+		'MARUSIA_CSS_URI'     => $mt_uri . 'public/css/',
+		'MARUSIA_JS_URI'      => $mt_uri . 'public/js/',
+	];
+
+	foreach ( $definitions as $definition => $value ) {
+		if ( ! defined( $definition ) ) {
+			define( $definition, $value );
+		}
 	}
 
 	/**
